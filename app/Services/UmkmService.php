@@ -25,17 +25,25 @@ class UmkmService
     protected ProdukRepository $produkRepository;
 
     /**
+     * @var CloudinaryService
+     */
+    protected CloudinaryService $cloudinaryService;
+
+    /**
      * Constructor
      *
      * @param UmkmRepository $umkmRepository
      * @param ProdukRepository $produkRepository
+     * @param CloudinaryService $cloudinaryService
      */
     public function __construct(
         UmkmRepository $umkmRepository,
-        ProdukRepository $produkRepository
+        ProdukRepository $produkRepository,
+        CloudinaryService $cloudinaryService
     ) {
         $this->umkmRepository = $umkmRepository;
         $this->produkRepository = $produkRepository;
+        $this->cloudinaryService = $cloudinaryService;
     }
 
     /**
@@ -311,7 +319,7 @@ class UmkmService
     }
 
     /**
-     * Upload image to storage.
+     * Upload image to Cloudinary.
      *
      * @param mixed $file
      * @param string $folder
@@ -319,21 +327,18 @@ class UmkmService
      */
     private function uploadImage($file, string $folder): string
     {
-        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-        $path = $file->storeAs("public/{$folder}", $filename);
-        return str_replace('public/', 'storage/', $path);
+        return $this->cloudinaryService->uploadImage($file, $folder);
     }
 
     /**
-     * Delete image from storage.
+     * Delete image from Cloudinary.
      *
-     * @param string $path
+     * @param string $url
      * @return bool
      */
-    private function deleteImage(string $path): bool
+    private function deleteImage(string $url): bool
     {
-        $storagePath = str_replace('storage/', 'public/', $path);
-        return Storage::delete($storagePath);
+        return $this->cloudinaryService->deleteImage($url);
     }
 
     /**

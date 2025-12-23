@@ -82,7 +82,7 @@
                     <div class="flex items-start gap-3 md:gap-6 mb-4 md:mb-6">
                         <div class="w-[100px] h-[100px] md:w-[187px] md:h-[187px] bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center" id="image-preview">
                             @if($umkm->foto_usaha)
-                                <img src="{{ asset('storage/' . $umkm->foto_usaha) }}" class="w-full h-full object-cover" alt="{{ $umkm->nama_usaha }}">
+                                <img src="{{ $umkm->foto_usaha_url }}" class="w-full h-full object-cover" alt="{{ $umkm->nama_usaha }}">
                             @else
                                 <img src="{{ asset('images/placeholder_umkm.webp') }}" class="w-full h-full object-cover" alt="UMKM Preview">
                             @endif
@@ -192,7 +192,7 @@
                                 <div class="flex items-center gap-2 md:gap-4 p-2 md:p-3 bg-white rounded-lg border border-gray-200" id="existing-product-{{ $produk->id }}">
                                     <div class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
                                         @if($produk->foto_produk)
-                                            <img src="{{ asset('storage/' . $produk->foto_produk) }}" class="w-full h-full object-cover" alt="{{ $produk->nama_produk }}">
+                                            <img src="{{ $produk->foto_produk_url }}" class="w-full h-full object-cover" alt="{{ $produk->nama_produk }}">
                                         @else
                                             <img src="{{ asset('images/placeholder_produk.webp') }}" class="w-full h-full object-cover" alt="Product">
                                         @endif

@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="bg-[#f6f5f5] rounded-[18px] p-3 min-w-[280px]">
                 <div class="flex gap-3">
                     <div class="w-[86px] h-[74px] border-[3px] border-[#2d7e37] rounded-xl overflow-hidden flex-shrink-0">
-                        <img src="${umkm.foto_usaha ? '/storage/' + umkm.foto_usaha : placeholderUrl}" 
+                        <img src="${umkm.foto_usaha_url || placeholderUrl}" 
                              alt="${umkm.nama_usaha}" 
                              class="w-full h-full object-cover">
                     </div>

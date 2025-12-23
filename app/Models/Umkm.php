@@ -45,6 +45,15 @@ class Umkm extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'foto_usaha_url',
+    ];
+
+    /**
      * Get all products for this UMKM.
      *
      * @return HasMany
@@ -93,5 +102,26 @@ class Umkm extends Model
     {
         $parts = explode(',', $this->alamat);
         return trim($parts[0] ?? $this->alamat);
+    }
+
+    /**
+     * Get foto usaha URL (supports both Cloudinary and local storage).
+     *
+     * @return string|null
+     */
+    public function getFotoUsahaUrlAttribute(): ?string
+    {
+        if (empty($this->foto_usaha)) {
+            return null;
+        }
+
+        // If it's already a full URL (Cloudinary), return as is
+        if (str_starts_with($this->foto_usaha, 'http://') || str_starts_with($this->foto_usaha, 'https://')) {
+            return $this->foto_usaha;
+        }
+
+        // Local storage path - remove 'storage/' prefix if exists
+        $path = str_replace('storage/', '', $this->foto_usaha);
+        return asset('storage/' . $path);
     }
 }

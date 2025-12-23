@@ -21,7 +21,7 @@
         
         <!-- Background Image -->
         @if($umkm->foto_usaha)
-            <img src="{{ asset('storage/' . $umkm->foto_usaha) }}" 
+            <img src="{{ $umkm->foto_usaha_url }}" 
                  alt="{{ $umkm->nama_usaha }}" 
                  class="w-full h-full object-cover">
         @else
@@ -100,7 +100,7 @@
                     <!-- Image -->
                     <div class="h-[90px] md:h-[162px] w-full overflow-hidden p-1 md:p-2">
                         @if($produk->foto_produk)
-                            <img src="{{ asset('storage/' . $produk->foto_produk) }}" 
+                            <img src="{{ $produk->foto_produk_url }}" 
                                  alt="{{ $produk->nama_produk }}" 
                                  class="w-full h-full object-cover rounded-[11px]">
                         @else
@@ -207,7 +207,7 @@
             <!-- UMKM Image -->
             <div class="w-[60px] h-[60px] md:w-[103px] md:h-[103px] rounded overflow-hidden flex-shrink-0">
                 @if($umkm->foto_usaha)
-                    <img src="{{ asset('storage/' . $umkm->foto_usaha) }}" 
+                    <img src="{{ $umkm->foto_usaha_url }}" 
                          alt="{{ $umkm->nama_usaha }}" 
                          class="w-full h-full object-cover">
                 @else

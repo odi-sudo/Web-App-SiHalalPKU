@@ -89,7 +89,7 @@
                         <!-- Image -->
                         <div class="w-[70px] h-[65px] rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
                             @if($umkm->foto_usaha)
-                                <img src="{{ asset('storage/' . $umkm->foto_usaha) }}" 
+                                <img src="{{ $umkm->foto_usaha_url }}" 
                                      alt="{{ $umkm->nama_usaha }}" 
                                      class="w-full h-full object-cover">
                             @else
@@ -180,7 +180,7 @@
                                 <td class="py-4 px-6">
                                     <div class="w-[104px] h-[97px] rounded-lg overflow-hidden bg-gray-200">
                                         @if($umkm->foto_usaha)
-                                            <img src="{{ asset('storage/' . $umkm->foto_usaha) }}" 
+                                            <img src="{{ $umkm->foto_usaha_url }}" 
                                                  alt="{{ $umkm->nama_usaha }}" 
                                                  class="w-full h-full object-cover">
                                         @else

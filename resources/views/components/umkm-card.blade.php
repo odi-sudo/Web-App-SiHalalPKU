@@ -4,7 +4,7 @@
     <!-- Image -->
     <div class="h-[125px] md:h-[162px] w-full overflow-hidden rounded-t-[11px] p-[5px] md:p-[7px]">
         @if($umkm->foto_usaha)
-            <img src="{{ asset('storage/' . $umkm->foto_usaha) }}" 
+            <img src="{{ $umkm->foto_usaha_url }}" 
                  alt="{{ $umkm->nama_usaha }}" 
                  class="w-full h-full object-cover rounded-[11px]">
         @else

@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="padding: 12px; min-width: 280px;">
                 <div style="display: flex; gap: 12px;">
                     <div style="width: 86px; height: 74px; border: 3px solid #2d7e37; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
-                        <img src="${umkm.foto_usaha ? '/storage/' + umkm.foto_usaha : placeholderUrl}" 
+                        <img src="${umkm.foto_usaha_url || placeholderUrl}" 
                              alt="${umkm.nama_usaha}" 
                              style="width: 100%; height: 100%; object-fit: cover;">
                     </div>

@@ -57,4 +57,25 @@ class Produk extends Model
     {
         return 'Rp ' . number_format((float) $this->harga, 0, ',', '.');
     }
+
+    /**
+     * Get foto produk URL (supports both Cloudinary and local storage).
+     *
+     * @return string|null
+     */
+    public function getFotoProdukUrlAttribute(): ?string
+    {
+        if (empty($this->foto_produk)) {
+            return null;
+        }
+
+        // If it's already a full URL (Cloudinary), return as is
+        if (str_starts_with($this->foto_produk, 'http://') || str_starts_with($this->foto_produk, 'https://')) {
+            return $this->foto_produk;
+        }
+
+        // Local storage path - remove 'storage/' prefix if exists
+        $path = str_replace('storage/', '', $this->foto_produk);
+        return asset('storage/' . $path);
+    }
 }

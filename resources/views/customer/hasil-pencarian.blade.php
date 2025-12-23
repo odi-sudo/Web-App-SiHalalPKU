@@ -113,7 +113,7 @@
                                     <div class="flex items-center gap-1 md:gap-2 py-0.5 md:py-1 {{ !$loop->last ? 'border-b border-gray-200' : '' }}">
                                         <div class="w-5 h-5 md:w-8 md:h-8 rounded overflow-hidden flex-shrink-0 bg-gray-100">
                                             @if($produk->foto_produk)
-                                                <img src="{{ asset('storage/' . $produk->foto_produk) }}" 
+                                                <img src="{{ $produk->foto_produk_url }}" 
                                                      alt="{{ $produk->nama_produk }}" 
                                                      class="w-full h-full object-cover">
                                             @else
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="bg-[#f6f5f5] rounded-[18px] p-3 min-w-[280px]">
                 <div class="flex gap-3">
                     <div class="w-[86px] h-[74px] border-[3px] border-[#2d7e37] rounded-xl overflow-hidden flex-shrink-0">
-                        <img src="${umkm.foto_usaha ? '/storage/' + umkm.foto_usaha : placeholderUrl}" 
+                        <img src="${umkm.foto_usaha_url || placeholderUrl}" 
                              alt="${umkm.nama_usaha}" 
                              class="w-full h-full object-cover">
                     </div>
